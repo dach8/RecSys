@@ -1,5 +1,8 @@
 from enum import Enum
 
+EXECUTION_COST = 10.0
+
+
 class Category(Enum):
     T_SHIRT = "T-shirt"
     JEANS = "Jeans"
@@ -11,12 +14,14 @@ class Category(Enum):
     SNEAKERS = "Sneakers"
     SHOES = "Shoes"
 
+
 class ClothingStyle(Enum):
     SPORTY = "Sporty "
     CASUAL = "Casual"
     CLASSIC = "Classic"
     STREETWEAR = "Streetwear"
     PUNK = "Punk"
+
 
 class Size(Enum):
     XS = "XS"
@@ -25,6 +30,7 @@ class Size(Enum):
     L = "L"
     XL = "XL"
     XXL = "XXL"
+
 
 class Color(Enum):
     RED = "Red"
@@ -40,6 +46,7 @@ class Color(Enum):
     PURPLE = "Purple"
     BROWN = "Brown"
     PINK = "Pink"
+
 
 class Material(Enum):
     COTTON = "Cottom"
