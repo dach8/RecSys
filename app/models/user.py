@@ -1,5 +1,5 @@
 import hashlib
-
+from sqlmodel import SQLModel, Field
 
 class User:
     def __init__(self, user_id: int, name: str, email: str, male: bool):
