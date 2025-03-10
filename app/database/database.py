@@ -9,17 +9,18 @@ engine = create_engine(
     max_overflow=10
 )
 
-@contextmanager
+
+
 def get_session():
     with Session(engine) as session:
         yield session
 
 
 def init_db():
-    # import app.models.account
-    # import app.models.user
-    # import app.models.item
-    # import app.models.prediction
-    # import app.models.ml
+    import app.models.account
+    import app.models.user
+    import app.models.item
+    import app.models.prediction
+    import app.models.ml
     SQLModel.metadata.drop_all(engine)
     SQLModel.metadata.create_all(engine)

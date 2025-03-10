@@ -1,13 +1,14 @@
 # from models.user import User
 import os, sys
 
-my_lib_path = os.path.abspath('C:/Users/Pussy Killer/Desktop/ML/ML_Ops/project_recommendation/app/models/')
+my_lib_path = os.path.abspath('C:/Users/Pussy Killer/Desktop/ML/ML_Ops/project_recommendation/app/')
 sys.path.append(my_lib_path)
 
 from sqlmodel import Session
 from app.database import init_db, get_session
 from app.services.crud.user import register_user, get_user_by_id, get_user_by_email
 from app.services.crud.account import get_account_by_user_id, update_account_balance
+
 
 def test_user_creation():
     # Инициализация БД
@@ -47,6 +48,6 @@ def test_user_creation():
         session.rollback()
         session.close()
 
+
 if __name__ == "__main__":
     test_user_creation()
-

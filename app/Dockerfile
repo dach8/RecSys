@@ -8,5 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+ENV PYTHONPATH="${PYTHONPATH}:/app"
+
 # Команда для запуска приложения
 CMD ["python", "main.py"]
