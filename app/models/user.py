@@ -1,32 +1,23 @@
 import hashlib
 from sqlmodel import SQLModel, Field
 
-class User:
-    def __init__(self, user_id: int, name: str, email: str, male: bool):
-        self.__user_id = user_id
-        self.__name = name
-        self.__male = male
-        self.__email = email
-        self.__password_hash = None
+from sqlmodel import SQLModel, Field, Relationship
+import hashlib
+from typing import Optional
+from .account import Account
 
-    @property
-    def user_id(self) -> int:
-        return self.__user_id
 
-    @property
-    def name(self) -> str:
-        return self.__name
+class User(SQLModel, table=True):
+    user_id: Optional[int] = Field(default=None, primary_key=True)
+    name: str
+    email: str = Field(unique=True)
+    male: bool
+    password_hash: str
 
-    @property
-    def email(self) -> str:
-        return self.__email
-
-    @property
-    def male(self) -> bool:
-        return self.__male
+    account: Optional[Account] = Relationship(back_populates="user")
 
     def set_password(self, password: str):
-        self.__password_hash = hashlib.sha256(password.encode()).hexdigest()
+        self.password_hash = hashlib.sha256(password.encode()).hexdigest()
 
     def check_password(self, password: str) -> bool:
-        return self.__password_hash == hashlib.sha256(password.encode()).hexdigest()
+        return self.password_hash == hashlib.sha256(password.encode()).hexdigest()
