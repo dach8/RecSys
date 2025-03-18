@@ -1,6 +1,7 @@
 from typing import Optional
 from sqlmodel import Session
-from models.account import Account
+
+from app.models import Account
 
 
 def get_account_by_user_id(session: Session, user_id: int) -> Optional[Account]:
